@@ -78,8 +78,10 @@ public class Main {
         Integer Quantity = 0;
         //for (String w : DataEntry) {
         for (int w = 0; w < DataEntry.length; w++) {
-            if (Fitem) {
 
+            if (isNumeric(DataEntry[w])) {
+                Quantity = Integer.parseInt(DataEntry[w]);
+                qty = true;
             } else {
                 FoodItem = DataEntry[w].replace(",", "");
                 FoodItem = FoodItems(FoodItem);
@@ -93,13 +95,6 @@ public class Main {
                     Fitem = true;
                 }
             }
-
-            if (isNumeric(DataEntry[w])) {
-                Quantity = Integer.parseInt(DataEntry[w]);
-                qty = true;
-            }
-
-
             if (Fitem && qty) {
                 Item.add(new Items(FoodItem, Quantity));
                 Fitem = false;
